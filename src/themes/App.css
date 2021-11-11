@@ -1,0 +1,12 @@
+.app{
+    display: flex;
+    display: -webkit-flex;
+    position: fixed;
+    min-height: 100%;
+    min-width: 100%;
+}
+@media screen and (max-width: 700px) {
+    .app{
+        display: block ;
+    }
+}

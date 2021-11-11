@@ -1,0 +1,26 @@
+.workspace{
+    background-color:green;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+}
+.inner-section{
+    background-color: rgba(226, 226, 226, 1);
+
+    position: absolute;
+    left:10px;
+    right:10px;
+    top:0;
+    bottom:0;
+
+
+}
+
+@media screen and (max-width: 700px) {
+    .workspace {
+        margin-left: 0;
+    }
+}
