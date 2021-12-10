@@ -8,8 +8,7 @@
     padding: 0;
 }
 
-::before,
-::after {
+.book ::before, .book ::after {
     content: "";
 }
 
@@ -42,20 +41,30 @@ a {
     text-decoration: none;
 }
 
+.isbn{
+    /*display: inline-block;*/
+    /*position: absolute;*/
+    /*bottom: 5%;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*text-transform: uppercase;*/
+    /*border: 2px solid #2c3e50;*/
+    /*font-size: 0.7em;*/
+    /*font-weight: 700;*/
+    /*padding: 0.1em 0.1em;*/
+    /*text-align: center;*/
+}
 .btn {
     display: inline-block;
     text-transform: uppercase;
-    border: 2px solid #2c3e50;
-    margin-top: 100px;
+    /*border: 2px solid #2c3e50;*/
+    /*margin-top: 100px;*/
+    margin-left: 40%;
     font-size: 0.7em;
     font-weight: 700;
-    padding: 0.1em 0.4em;
-    text-align: center;
-    -webkit-transition: color 0.3s, border-color 0.3s;
-    -moz-transition: color 0.3s, border-color 0.3s;
-    transition: color 0.3s, border-color 0.3s;
-}
 
+    text-align: center;
+}
 .btn:hover {
     border-color: #16a085;
     color: #16a085;
@@ -374,7 +383,7 @@ Table of Contents
 }
 
 .hardcover_back li:last-child:before {
-    box-shadow: 10px -1px 80px 20px #666;
+    /*box-shadow: 15px -1px 30px 15px #666;*/
     -webkit-transform: rotateX(90deg) rotateZ(90deg) translateZ(-140px) translateX(2px) translateY(-78px);
     -moz-transform: rotateX(90deg) rotateZ(90deg) translateZ(-140px) translateX(2px) translateY(-78px);
     transform: rotateX(90deg) rotateZ(90deg) translateZ(-140px) translateX(2px) translateY(-78px);
@@ -588,16 +597,16 @@ Table of Contents
 }
 
 .coverDesign h1 {
-    color: #fff;
-    font-size: 2.2em;
+    color: #2b2525;
+    font-size: 1.5em;
     letter-spacing: 0.05em;
     text-align: center;
-    margin: 54% 0 0 0;
+    margin: 20% 0 0 0;
     text-shadow: -1px -1px 0 rgba(0,0,0,0.1);
 }
 
 .coverDesign p {
-    color: #f8f8f8;
+    color: #2b2525;
     font-size: 1em;
     text-align: center;
     text-shadow: -1px -1px 0 rgba(0,0,0,0.1);
@@ -622,6 +631,18 @@ Table of Contents
     background-image: -webkit-linear-gradient(top, #f8e9d1 58%, #e7d5b7 0%);
     background-image: -moz-linear-gradient(top, #f8e9d1 58%, #e7d5b7 0%);
     background-image: linear-gradient(top, #f8e9d1 58%, #e7d5b7 0%);
+}
+.green {
+    background-color: #2c9603;
+    background-image: -webkit-linear-gradient(top, #2c9603 58%, #298c02 0%);
+    background-image: -moz-linear-gradient(top, #2c9603 58%, #298c02 0%);
+    background-image: linear-gradient(top, #2c9603 58%, #298c02 0%);
+}
+.brown {
+    background-color: #754102;
+    background-image: -webkit-linear-gradient(top, #754102 58%, #6c3a01 0%);
+    background-image: -moz-linear-gradient(top, #754102 58%, #6c3a01 0%);
+    background-image: linear-gradient(top, #754102 58%, #6c3a01 0%);
 }
 
 /* Basic ribbon */
@@ -668,20 +689,9 @@ Table of Contents
     border-right: 20px solid transparent;
 }
 
-/* figcaption */
-
-figcaption {
-    padding-left: 40px;
-    text-align: left;
-    position: absolute;
-    top: 0%;
-    left: 160px;
-    width: 310px;
-    -webkit-backface-visibility: hidden;
-}
-
 figcaption h1 {
     margin: 0;
+    font-size: 1.5em;
 }
 
 figcaption span {
@@ -693,6 +703,7 @@ figcaption span {
 figcaption p {
     color: #63707d;
     line-height: 1.3;
+    overflow-wrap: break-word;
 }
 
 /* Media Queries */
@@ -707,14 +718,5 @@ figcaption p {
 
     .book {
         margin: 0 auto;
-    }
-
-    figcaption {
-        text-align: center;
-        width: 320px;
-        top: 250px;
-        padding-left: 0;
-        left: -80px;
-        font-size: 90%;
     }
 }

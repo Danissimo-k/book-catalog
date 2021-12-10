@@ -9,6 +9,7 @@ import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import logo from '../assets/books-stack-of-three.png'
+import icon from '../assets/icon-search.png'
 import {useScrollTrigger} from "@mui/material";
 
 const ElevationScroll = (props)=> {
@@ -34,13 +35,12 @@ const Search = styled('div')(({ theme }) => ({
     '&:hover': {
         backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
+    marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
         marginLeft: theme.spacing(1),
         width: 'auto',
     },
-    marginLeft:0
-
 }));
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
@@ -52,7 +52,6 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
     alignItems: 'center',
     justifyContent: 'center',
 }));
-
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
     '& .MuiInputBase-input': {
@@ -68,13 +67,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
             },
         },
     },
-}))
+}));
 
 const AppBarSearch = (props) => {
     return (
-        <ElevationScroll sx={{
-            marginBottom: 5
-        }}>
+        <ElevationScroll>
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static"
                     style={{
@@ -96,11 +93,7 @@ const AppBarSearch = (props) => {
                     >
                         Book catalog
                     </Typography>
-                        <Search sx={{
-                            float: 'left',
-
-                        }}
-                        >
+                        <Search>
                             <SearchIconWrapper>
                                 <SearchIcon />
                             </SearchIconWrapper>

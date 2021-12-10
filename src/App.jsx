@@ -1,17 +1,17 @@
 import React from 'react';
 import AppBarSearch from "./components/AppBarSearch";
-// import 'normalize.css'
-import {Box} from "@mui/material";
 import WorkSpace from "./components/WorkSpace";
-import BookCard from "./components/BookCard";
+import store from "./store/store";
+import {Provider} from 'react-redux'
 
 
 function App(props) {
     return (
-        <div>
-            <AppBarSearch/>
-            <WorkSpace/>
-        </div>
+        <Provider store={store}>
+                <AppBarSearch/>
+                <WorkSpace/>
+        </Provider>
+
 
     );
 }
