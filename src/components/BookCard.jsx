@@ -2,7 +2,7 @@ import React from 'react';
 import '../themes/BookCard.css'
 import {Box, Button, Container, Grid, Rating, Typography,} from "@mui/material";
 import LocalLibraryTwoToneIcon from '@mui/icons-material/LocalLibraryTwoTone';
-import BookDialog from "./BookDialog";
+import BookInfo from "./BookInfo";
 
 
 const BookCard = ({title,description, isbn, rating,  year, authors, id}) => {
@@ -125,7 +125,7 @@ const BookCard = ({title,description, isbn, rating,  year, authors, id}) => {
                     <p>{text}</p>
                 </figcaption>
             </Grid>
-
+        <BookInfo authors={authors} rating={rating} isbn={isbn} year={year} description={description} title={title} id={id}/>
         </Grid>
         )
     }

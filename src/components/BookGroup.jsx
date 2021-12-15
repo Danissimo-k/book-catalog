@@ -18,7 +18,7 @@ const BookGroup = ({year, books}) => {
                     ml: 'auto',
                     mr: 'auto',
                     width: '95%',
-                    backgroundColor: '#E2E2E2',
+                    backgroundColor: '#FFF',
                     borderRadius:4
 
                 }}>
