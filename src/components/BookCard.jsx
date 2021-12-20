@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../themes/BookCard.css'
 import {Box, Button, Container, Grid, Rating, Typography,} from "@mui/material";
 import LocalLibraryTwoToneIcon from '@mui/icons-material/LocalLibraryTwoTone';
@@ -8,10 +8,21 @@ import BookInfo from "./BookInfo";
 const BookCard = ({title,description, isbn, rating,  year, authors, id}) => {
     const  COLORS = ['yellow', 'blue', 'grey', 'green']
 
+    const [expandDialog, setExpandDialog] = useState(false);
+    const [openDialog, setOpenDialog] = useState(false);
+
+    const handleClickOpen = () => {
+        setOpenDialog(true);
+    };
+
+
+
     let text = "ffffffffffffffffffsdfsdfKLDSJFLKSDjfkdfljsdfkjjjjjjjjjjjjjjjjjjjjjjjlsssssssssssssssssssssssssssssssssssssj" +
         "gdsglk;jsd; lfkgjsd;lfgkjsd;flgkjsd;f glkdfj;slgkdfj;sgldkfjg;sdlkfgj;sdlfkgjs;dflgjks ;dflgjk"
 
     let editedTitle;
+
+
 
     // Cut description
     if (description?.length > 100) {
@@ -73,7 +84,7 @@ const BookCard = ({title,description, isbn, rating,  year, authors, id}) => {
                                 </Box>
                                 <Rating name="read-only" value={rating/2} precision={0.1} readOnly  />
 
-                                <a onClick={''} className='btn'>
+                                <a onClick={()=> handleClickOpen()} className='btn' >
                                     <LocalLibraryTwoToneIcon fontSize='large'/>
                                 </a>
 
@@ -125,7 +136,7 @@ const BookCard = ({title,description, isbn, rating,  year, authors, id}) => {
                     <p>{text}</p>
                 </figcaption>
             </Grid>
-        <BookInfo authors={authors} rating={rating} isbn={isbn} year={year} description={description} title={title} id={id}/>
+        <BookInfo authors={authors} rating={rating} isbn={isbn} year={year} description={description} title={title} id={id} setExpand={setExpandDialog} expand={expandDialog} setOpen={setOpenDialog} open={openDialog}/>
         </Grid>
         )
     }

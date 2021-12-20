@@ -3,13 +3,10 @@ import BookGroup from "./BookGroup";
 import {Stack, Paper } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import {useDispatch, useSelector} from "react-redux";
-import {editBookAsync, getBooksAsync} from "../store/booksSlice";
-import BookCard from "./BookCard";
+import {getBooksAsync} from "../store/booksSlice";
 
 const Item = styled(Paper)(({ theme }) => ({
-    // ...theme.typography.body2,
     padding: theme.spacing(1),
-    // textAlign: 'center',
     background:'none',
     variant:'outlined'
     }));

@@ -23,11 +23,6 @@ export const books = collection(firestore, BOOK_PATH);
 
 //Actions---------------------------------------------------------------------------------------------------------------
 
-
-export const editBookDB = async (id, newData) => {
-    await updateDoc(doc(firestore,BOOK_PATH, id), newData)
-}
-
 export const addBookDB = async (data)=> {
     await addDoc(books, data)
 }

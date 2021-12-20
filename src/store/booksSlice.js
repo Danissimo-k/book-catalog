@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import {books, firestore, BOOK_PATH} from './api'
-import {addDoc, collection, deleteDoc, doc, getDocs, getFirestore, query, updateDoc} from "firebase/firestore";
+import {addDoc,  deleteDoc, doc, getDocs,  query, updateDoc} from "firebase/firestore";
 
 
 // Async Thunks --------------------------------------------------------------------------------------------------------
