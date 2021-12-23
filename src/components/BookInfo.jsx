@@ -1,9 +1,24 @@
 import React, {useState} from 'react';
-import {Box, Typography, ThemeProvider, createTheme, Rating, Dialog, Slide, Grow, Stack, Button} from "@mui/material";
+import {
+    Box,
+    Typography,
+    ThemeProvider,
+    createTheme,
+    Rating,
+    Dialog,
+    Grow,
+    Stack,
+    Button,
+
+} from "@mui/material";
 import ShowMoreText from "react-show-more-text";
 import {ExpandLess, ExpandMore} from "@mui/icons-material";
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
+import {getBooksAsync, removeBookAsync,setDeleteAlert} from "../store/booksSlice";
+import {useDispatch} from "react-redux";
+
+
 
 const styles = {
     button: {
@@ -28,8 +43,19 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 //DONE MAKE FONTSIZE BIGGER
-function BookInfo({title,description, isbn, rating,  year, authors, id, setOpen, open, setExpand, expand}) {
+function BookInfo({title,description, isbn, rating,  year, authors, id, setOpen, open, recommend=false}) {
+    const [expand, setExpand] = useState(false);
 
+    const dispatch = useDispatch()
+
+    const deleteHandler = () => {
+        dispatch(removeBookAsync({id}))
+        dispatch(getBooksAsync())
+        dispatch(setDeleteAlert(true))
+        setTimeout(()=> {
+            dispatch(setDeleteAlert(false))
+        }, 5000)
+    }
 
     const handleClose = () => {
         setOpen(false);
@@ -41,10 +67,6 @@ function BookInfo({title,description, isbn, rating,  year, authors, id, setOpen,
 
     return (
         <Dialog
-            sx={{
-                // position:'relative',
-
-            }}
             PaperProps={{
                 style: {
                     backgroundColor: '#E2E2E2',
@@ -116,24 +138,27 @@ function BookInfo({title,description, isbn, rating,  year, authors, id, setOpen,
                         onClick={onClick}
                         expanded={expand}
                     >
-                        {description || "zero words"}
+                        {description || ""}
                     </ShowMoreText>
                 </Typography>
             </ThemeProvider>
-            <Stack spacing={2} direction={'row'} justifyContent="flex-end">
-                <Button variant="outlined" color="error">
+            {recommend ||
+                <Stack spacing={2} direction={'row'} justifyContent="flex-end">
+                <Button variant="outlined" color="error" link onClick={() => deleteHandler()}>
                     Delete
                 </Button>
                 <Button
-
+                    href={`/edit/${id}`}
                     sx={{
-                    color:'#000000',
-                        border:'1px solid black',
-                }}>
+                        color: '#000000',
+                        border: '1px solid black',
+                    }}>
                     Edit
                 </Button>
             </Stack>
+            }
         </Box>
+
         </Dialog>
     );
 }

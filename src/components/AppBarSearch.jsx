@@ -1,32 +1,12 @@
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import logo from '../assets/books-stack-of-three.png'
-import icon from '../assets/icon-search.png'
-import {useScrollTrigger} from "@mui/material";
+import { Typography, InputBase, Toolbar, Box, Button} from "@mui/material";
+import {setGettingRecommendedBook, setSearchTerm} from "../store/booksSlice"
+import {useDispatch, useSelector} from "react-redux";
 
-const ElevationScroll = (props)=> {
-    const { children, window } = props;
-    // Note that you normally won't need to set the window ref as useScrollTrigger
-    // will default to window.
-    // This is only being set here because the demo is in an iframe.
-    const trigger = useScrollTrigger({
-        disableHysteresis: true,
-        threshold: 0,
-        target: window ? window() : undefined,
-    });
-
-    return React.cloneElement(children, {
-        elevation: trigger ? 4 : 0,
-    });
-}
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -69,13 +49,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-const AppBarSearch = (props) => {
+const AppBarSearch = () => {
+    const dispatch = useDispatch()
+    const searchTerm = useSelector((state => state.books.searchTerm))
     return (
-        <ElevationScroll>
-        <Box sx={{ flexGrow: 1 }}>
+        // <Box sx={{ flexGrow: 1 }}>
+        <React.Fragment>
             <AppBar position="static"
                     style={{
-                        background:'#DEA7EC'
+                        background:'#ac6730'
                     }}
 
             >
@@ -93,21 +75,31 @@ const AppBarSearch = (props) => {
                     >
                         Book catalog
                     </Typography>
-                        <Search>
+                        <Search >
                             <SearchIconWrapper>
                                 <SearchIcon />
                             </SearchIconWrapper>
                             <StyledInputBase
+                                onChange={(e)=> dispatch(setSearchTerm(e.target.value))}
                                 placeholder="Search…"
                                 inputProps={{ 'aria-label': 'search' }}
+                                value={searchTerm}
                             />
                         </Search>
-                    <Box sx={{ flexGrow:1.2}}/>
+                    <Box sx={{ flexGrow:1.2, display: { xs: 'none', md: 'flex' }}}>
+
+                    </Box>
+                    <Button
+                        onClick={()=> dispatch(setGettingRecommendedBook(true))}
+                        sx={{ my: 2, color: 'white', display: 'block' }}
+                    >
+                        Recommended Book
+                    </Button>
 
                 </Toolbar>
             </AppBar>
-        </Box>
-        </ElevationScroll>
+        </React.Fragment>
+        // {/*</Box>*/}
     );
 }
 

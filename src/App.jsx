@@ -3,38 +3,42 @@ import AppBarSearch from "./components/AppBarSearch";
 import WorkSpace from "./components/WorkSpace";
 import store from "./store/store";
 import {Provider} from 'react-redux'
-import {BrowserRouter as Router,Routes , Route} from 'react-router-dom'
-import BookInfo from "./components/BookInfo";
+import {BrowserRouter as Router, Routes, Route,  Navigate } from 'react-router-dom'
 import EditBookPage from "./components/EditBookPage";
 import './themes/App.css'
 
 
-function App(props) {
+function App() {
     return (
         <div style={{
 
             height: '100%',
 
         }}>
-            <EditBookPage/>
-            {/*<Router>*/}
-            {/*    <Provider store={store}>*/}
-            {/*        <Routes>*/}
+            <Router >
+                <Provider store={store}>
+                    <Routes>
 
-            {/*                <Route path='/'*/}
-            {/*                       element={<>*/}
-            {/*                    <AppBarSearch/>*/}
-            {/*                    <WorkSpace/>*/}
-            {/*                       </>}*/}
-            {/*                />*/}
+                            <Route path='/'
+                                   element={<>
+                                <AppBarSearch/>
+                                <WorkSpace/>
+                                   </>}
+                            />
 
-            {/*                <Route*/}
-            {/*                    path='/edit/:bookID' element={<EditBookPage />}*/}
-            {/*                />*/}
+                            <Route
+                                path='/edit/:bookID' element={<EditBookPage />}
+                            />
 
-            {/*        </Routes>*/}
-            {/*    </Provider>*/}
-            {/*</Router>*/}
+                            <Route
+                                path='/create' element={<EditBookPage editing={false} />}
+                            />
+
+                            <Route path="*" element={<Navigate to ="/" />}/>
+
+                    </Routes>
+                </Provider>
+            </Router>
         </div>
 
 

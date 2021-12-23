@@ -1,5 +1,5 @@
 import {initializeApp} from "firebase/app";
-import {addDoc, collection, deleteDoc, doc, getDocs, getFirestore, query, updateDoc} from "firebase/firestore";
+import {addDoc, collection, getFirestore} from "firebase/firestore";
 //Path constant
 
 // Inititalize App
@@ -23,7 +23,5 @@ export const books = collection(firestore, BOOK_PATH);
 
 //Actions---------------------------------------------------------------------------------------------------------------
 
-export const addBookDB = async (data)=> {
-    await addDoc(books, data)
-}
+
 

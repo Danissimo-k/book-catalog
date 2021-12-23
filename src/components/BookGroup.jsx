@@ -1,8 +1,9 @@
-import React, {useEffect} from 'react';
-import {Box, Grid, Stack, Typography} from "@mui/material";
+import React from 'react';
+import {Box, Grid,  Typography} from "@mui/material";
 import BookCard from "./BookCard";
 
 const BookGroup = ({year, books}) => {
+    // useEffect()
 
     return(
             <Box
@@ -31,6 +32,7 @@ const BookGroup = ({year, books}) => {
                                 isbn={book.isbn}
                                 rating={book.rating}
                                 authors={book.authors}
+                                id={book.id}
                                 sx={{
                                 ml:10
                             }}

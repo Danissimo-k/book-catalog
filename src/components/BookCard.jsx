@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import '../themes/BookCard.css'
-import {Box, Button, Container, Grid, Rating, Typography,} from "@mui/material";
+import {Box, Container, Grid, Rating} from "@mui/material";
 import LocalLibraryTwoToneIcon from '@mui/icons-material/LocalLibraryTwoTone';
 import BookInfo from "./BookInfo";
 
@@ -8,21 +8,13 @@ import BookInfo from "./BookInfo";
 const BookCard = ({title,description, isbn, rating,  year, authors, id}) => {
     const  COLORS = ['yellow', 'blue', 'grey', 'green']
 
-    const [expandDialog, setExpandDialog] = useState(false);
     const [openDialog, setOpenDialog] = useState(false);
 
     const handleClickOpen = () => {
         setOpenDialog(true);
     };
 
-
-
-    let text = "ffffffffffffffffffsdfsdfKLDSJFLKSDjfkdfljsdfkjjjjjjjjjjjjjjjjjjjjjjjlsssssssssssssssssssssssssssssssssssssj" +
-        "gdsglk;jsd; lfkgjsd;lfgkjsd;flgkjsd;f glkdfj;slgkdfj;sgldkfjg;sdlkfgj;sdlfkgjs;dflgjks ;dflgjk"
-
     let editedTitle;
-
-
 
     // Cut description
     if (description?.length > 100) {
@@ -33,7 +25,6 @@ const BookCard = ({title,description, isbn, rating,  year, authors, id}) => {
     if (title?.length > 55) {
         let counter  = 0
         const sep_text = title.split(' ')
-        console.log(sep_text)
         let i=0;
         for (i; i< sep_text.length; i++){
             if (counter > 55){
@@ -132,11 +123,11 @@ const BookCard = ({title,description, isbn, rating,  year, authors, id}) => {
                     width: '100%'
                 }}>
                     <h1>{title}</h1>
-                    <span>By {authors} </span>
-                    <p>{text}</p>
+                    <span>By {authors?.join(', ')} </span>
+                    <p>{description}</p>
                 </figcaption>
             </Grid>
-        <BookInfo authors={authors} rating={rating} isbn={isbn} year={year} description={description} title={title} id={id} setExpand={setExpandDialog} expand={expandDialog} setOpen={setOpenDialog} open={openDialog}/>
+        <BookInfo authors={authors} rating={rating} isbn={isbn} year={year} description={description} title={title} id={id}  setOpen={setOpenDialog} open={openDialog}/>
         </Grid>
         )
     }
